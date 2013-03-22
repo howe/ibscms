@@ -6,19 +6,27 @@ import java.util.List;
 import com.jeecms.cms.entity.back.CmsField;
 
 public interface CmsDataBackMng {
-	public List<String> listTabels();
 
-	public List<CmsField> listFields(String tablename);
+    public List<String> listTabels();
 
-	public List<String> listDataBases();
+    /**
+     * add this method support for mysql5.5 version <br/>
+     * 2013-3-22 yangq
+     */
+    public List<String> listTabels(String catalog);
 
-	public String createTableDDL(String tablename);
+    public List<CmsField> listFields(String tablename);
 
-	public List<Object[]> createTableData(String tablename);
-	
-	public String getDefaultCatalog()throws SQLException;
-	
-	public void setDefaultCatalog(String catalog) throws SQLException;
+    public List<String> listDataBases();
 
-	public Boolean executeSQL(String sql);
+    public String createTableDDL(String tablename);
+
+    public List<Object[]> createTableData(String tablename);
+
+    public String getDefaultCatalog() throws SQLException;
+
+    public void setDefaultCatalog(String catalog) throws SQLException;
+
+    public Boolean executeSQL(String sql);
+
 }

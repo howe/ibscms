@@ -15,49 +15,58 @@ import com.jeecms.cms.manager.assist.CmsDataBackMng;
 @Transactional
 public class CmsDataBackMngImpl implements CmsDataBackMng {
 
-	@Transactional(readOnly = true)
-	public String createTableDDL(String tablename) {
-		return dao.createTableDDL(tablename);
-	}
+    @Transactional(readOnly = true)
+    public String createTableDDL(String tablename) {
+        return dao.createTableDDL(tablename);
+    }
 
-	@Transactional(readOnly = true)
-	public List<Object[]> createTableData(String tablename) {
-		return dao.createTableData(tablename);
-	}
+    @Transactional(readOnly = true)
+    public List<Object[]> createTableData(String tablename) {
+        return dao.createTableData(tablename);
+    }
 
-	@Transactional(readOnly = true)
-	public List<CmsField> listFields(String tablename) {
-		return dao.listFields(tablename);
-	}
+    @Transactional(readOnly = true)
+    public List<CmsField> listFields(String tablename) {
+        return dao.listFields(tablename);
+    }
 
-	@Transactional(readOnly = true)
-	public List<String> listTabels() {
-		return dao.listTables();
-	}
+    @Transactional(readOnly = true)
+    public List<String> listTabels() {
+        return dao.listTables();
+    }
 
-	@Transactional(readOnly = true)
-	public List<String> listDataBases() {
-		return dao.listDataBases();
-	}
+    /**
+     * add this method support for mysql5.5 version <br/>
+     * 2013-3-22 yangq
+     */
+    @Transactional(readOnly = true)
+    public List<String> listTabels(String catalog) {
+        return dao.listTables(catalog);
+    }
 
-	@Transactional(readOnly = true)
-	public String getDefaultCatalog() throws SQLException {
-		return dao.getDefaultCatalog();
-	}
-	
-	public void setDefaultCatalog(String catalog) throws SQLException{
-		 dao.setDefaultCatalog(catalog);
-	}
+    @Transactional(readOnly = true)
+    public List<String> listDataBases() {
+        return dao.listDataBases();
+    }
 
-	public Boolean executeSQL(String sql) {
-		return dao.executeSQL(sql);
-	}
+    @Transactional(readOnly = true)
+    public String getDefaultCatalog() throws SQLException {
+        return dao.getDefaultCatalog();
+    }
 
-	private CmsDataBackDao dao;
+    public void setDefaultCatalog(String catalog) throws SQLException {
+        dao.setDefaultCatalog(catalog);
+    }
 
-	@Autowired
-	public void setDao(CmsDataBackDao dao) {
-		this.dao = dao;
-	}
+    public Boolean executeSQL(String sql) {
+        return dao.executeSQL(sql);
+    }
+
+    private CmsDataBackDao dao;
+
+    @Autowired
+    public void setDao(CmsDataBackDao dao) {
+        this.dao = dao;
+    }
 
 }

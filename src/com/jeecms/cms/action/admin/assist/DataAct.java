@@ -67,7 +67,19 @@ public class DataAct {
 
     @RequestMapping("/data/v_list.do")
     public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-        List<String> tables = dataBackMng.listTabels();
+        List<String> tables = null;
+        /**
+         * fix this support for mysql5.5 version <br/>
+         * 2013-3-22 yangq
+         */
+        try {
+            // tables = dataBackMng.listTabels();
+            tables = dataBackMng.listTabels(dataBackMng.getDefaultCatalog());
+        }
+        catch (SQLException e) {
+            model.addAttribute("msg", e.toString());
+            return "common/error_message";
+        }
         model.addAttribute("tables", tables);
         return "data/list";
     }
