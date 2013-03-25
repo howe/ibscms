@@ -62,4 +62,6 @@
 	<bean id="cmsFireWallConfigAct" class="com.jeecms.cms.action.admin.assist.CmsFireWallConfigAct"/>
 	<bean id="workloadStatisticAct" class="com.jeecms.cms.statistic.workload.CmsWorkLoadStatisticAct"/>
 	
+	<bean id="testBackgroundAct" class="com.ibscms.extend.web.TestBackgroundAct"/>
+	
 </beans>

@@ -1,4 +1,4 @@
-package com.ibscms.test.entity;
+package com.ibscms.extend.entity;
 
 public class Test {
     private int id;
