@@ -8,6 +8,7 @@ The development detail list :
 <ul>
 <li><a href="http://blog.csdn.net/cnyangqi/article/details/8675831" target="_blank">Part 1</a></li>
 <li><a href="http://blog.csdn.net/cnyangqi/article/details/8705110" target="_blank">Part 2</a></li>
+<li><a href="http://blog.csdn.net/cnyangqi/article/details/8717545" target="_blank">Part 3</a></li>
 </ul>
 
 Good luck, all of you.
