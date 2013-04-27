@@ -62,7 +62,8 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.setParam("checkStep", checkStep);
 		}
 		appendQuery(f, title, typeId, inputUserId, status, topLevel, recommend);
-		f.append(" group by bean.id");
+		f.append(" group by bean.id,bean.sortDate,bean.topLevel,bean.hasTitleImg,bean.recommend,bean.status,bean.viewsDay,bean.commentsDay,bean.downloadsDay,bean.upsDay,bean.type.id,bean.site.id,bean.user.id,bean.channel.id ");
+		appendGroupBy(f, orderBy);
 		if (prepared == status) {
 			f.append(" order by check.checkStep desc,bean.id desc");
 		} else {
@@ -183,7 +184,8 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.setParam("checkStep", checkStep);
 		}
 		appendQuery(f, title, typeId, inputUserId, status, topLevel, recommend);
-		f.append(" group by bean.id");
+		f.append(" group by bean.id,bean.sortDate,bean.topLevel,bean.hasTitleImg,bean.recommend,bean.status,bean.viewsDay,bean.commentsDay,bean.downloadsDay,bean.upsDay,bean.type.id,bean.site.id,bean.user.id,bean.channel.id ");
+		appendGroupBy(f, orderBy);
 		if (prepared == status) {
 			f.append(" order by check.checkStep desc,bean.id desc");
 		} else {
@@ -425,7 +427,8 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.append(" and bean.contentExt.title like :title");
 			f.setParam("title", "%" + title + "%");
 		}
-		f.append(" group by bean.id");
+		f.append(" group by bean.id,bean.sortDate,bean.topLevel,bean.hasTitleImg,bean.recommend,bean.status,bean.viewsDay,bean.commentsDay,bean.downloadsDay,bean.upsDay,bean.type.id,bean.site.id,bean.user.id,bean.channel.id ");
+		appendGroupBy(f, orderBy);
 		appendOrder(f, orderBy);
 		return f;
 	}
@@ -483,7 +486,8 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.append(" and bean.contentExt.title like :title");
 			f.setParam("title", "%" + title + "%");
 		}
-		f.append(" group by bean.id");
+		f.append(" group by bean.id,bean.sortDate,bean.topLevel,bean.hasTitleImg,bean.recommend,bean.status,bean.viewsDay,bean.commentsDay,bean.downloadsDay,bean.upsDay,bean.type.id,bean.site.id,bean.user.id,bean.channel.id ");
+		appendGroupBy(f, orderBy);
 		appendOrder(f, orderBy);
 		return f;
 	}
@@ -527,7 +531,8 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.append(" and bean.contentExt.title like :title");
 			f.setParam("title", "%" + title + "%");
 		}
-		f.append(" group by bean.id");
+		f.append(" group by bean.id,bean.sortDate,bean.topLevel,bean.hasTitleImg,bean.recommend,bean.status,bean.viewsDay,bean.commentsDay,bean.downloadsDay,bean.upsDay,bean.type.id,bean.site.id,bean.user.id,bean.channel.id ");
+		appendGroupBy(f, orderBy);
 		appendOrder(f, orderBy);
 		return f;
 	}
@@ -570,7 +575,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.append(" join bean.contentExt as ext");
 			f.append(" where tag.id=:tagId").setParam("tagId", tagIds[0]);
 		} else {
-			f.append("select distinct bean from Content bean");
+			f.append("select bean from Content bean");
 			f.append(" join bean.contentExt as ext");
 			f.append(" join bean.tags tag");
 			f.append(" where tag.id in(:tagIds)");
@@ -598,7 +603,6 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			f.setParam("title", "%" + title + "%");
 		}
 		appendOrder(f, orderBy);
-		f.append(" group by bean.id");
 		return f;
 	}
 

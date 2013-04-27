@@ -203,7 +203,6 @@ public class ContentAct{
 				queryTypeId, queryTopLevel, queryRecommend, queryOrderBy,
 				pageNo);
 		time = System.currentTimeMillis() - time;
-		System.out.println("time="+time);
 		return "content/list";
 	}
 
