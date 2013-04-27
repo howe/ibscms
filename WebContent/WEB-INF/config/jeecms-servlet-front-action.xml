@@ -37,4 +37,6 @@
 	<bean id="siteFlowAct" class="com.jeecms.cms.action.front.CmsSiteFlowAct" />
 
 	<bean id="testFrontAct" class="com.ibscms.extend.web.TestFrontAct" />
+	
+	<bean id="weixinAct" class="com.ibscms.extend.web.WeixinAct" />
 </beans>
